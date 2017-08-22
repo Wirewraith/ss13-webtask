@@ -55,11 +55,12 @@ module.exports = function(context, cb) {
             status: body
           };
           
-          console.log(body);
           resolve(body);
         });
       
       } else {
+        console.log('cache hit');
+        
         //Return data from storage
         resolve(storedServerData.status);
       }
