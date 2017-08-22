@@ -36,8 +36,6 @@ module.exports = function(context, cb) {
       const storedServerData = dataStorage[`${url}:${port}`] || false;
       const now = Date.now();
       
-      console.log('what is happening');
-
       //If server data isn't stored, or we're outside the cooldown duration
       if (!storedServerData || now - storedServerData.last > config.cooldown * 1000) {
         Http2byond({
@@ -91,7 +89,7 @@ module.exports = function(context, cb) {
   getStorage().then((data) => {
     dataStorage = data;
     
-  }).then(function loop(i) {
+  }).then(function loop(i = 0) {
     if (i < servers.length) {
       let workPromise;
       const server = servers[i];
@@ -107,7 +105,6 @@ module.exports = function(context, cb) {
           });
         }).catch((e) => {
           //This is here to avoid an "uncaught exception" error. In fact, exceptions are handled by the catch() block in the overarching promise chain
-          console.log('error', e);
         });
         
       } else {
