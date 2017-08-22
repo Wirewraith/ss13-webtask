@@ -85,11 +85,11 @@ module.exports = function(context, cb) {
   const response = [];
   let dataStorage;
 
-  //Loop through all the servers grabbing data where appropriate
   getStorage().then((data) => {
     dataStorage = data;
     
   }).then(function loop(i = 0) {
+    //Loop through all the servers grabbing data where appropriate
     if (i < servers.length) {
       let workPromise;
       const server = servers[i];
