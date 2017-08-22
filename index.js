@@ -55,6 +55,7 @@ module.exports = function(context, cb) {
             status: body
           };
           
+          console.log(body);
           resolve(body);
         });
       
@@ -99,7 +100,6 @@ module.exports = function(context, cb) {
       if (parts && Array.isArray(parts) && parts.length > 2) {
         workPromise = getByondInfo(parts[1], parts[2]);
         workPromise.then((body) => {
-          console.log(body);
           response.push({
             url: server,
             status: body
