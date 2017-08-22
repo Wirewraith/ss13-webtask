@@ -105,8 +105,9 @@ module.exports = function(context, cb) {
             url: server,
             status: body
           });
-        }).catch(() => {
+        }).catch((e) => {
           //This is here to avoid an "uncaught exception" error. In fact, exceptions are handled by the catch() block in the overarching promise chain
+          console.log('error', e);
         });
         
       } else {
