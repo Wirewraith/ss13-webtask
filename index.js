@@ -35,6 +35,8 @@ module.exports = function(context, cb) {
     return new Bluebird((resolve, reject) => {
       const storedServerData = dataStorage[`${url}:${port}`] || false;
       const now = Date.now();
+      
+      console.log('what is happening');
 
       //If server data isn't stored, or we're outside the cooldown duration
       if (!storedServerData || now - storedServerData.last > config.cooldown * 1000) {
@@ -59,8 +61,6 @@ module.exports = function(context, cb) {
         });
       
       } else {
-        console.log('cache hit');
-        
         //Return data from storage
         resolve(storedServerData.status);
       }
